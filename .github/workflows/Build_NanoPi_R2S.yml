@@ -1,18 +1,13 @@
 name: Build_NanoPi_R2S
 
-on: 
-  release:
-    types: [published]
-
-  push:
-    branches: 
-      - master
-
+on:
+  repository_dispatch:
+    types: [lean, r2s]
+  workflow_dispatch:
   schedule:
-    - cron: 0 4 * * *
-  
-  watch:
-    types: [started]
+    - cron: 0 18 * * *
+#  watch:
+#    types: started
 
 jobs:
   build:
