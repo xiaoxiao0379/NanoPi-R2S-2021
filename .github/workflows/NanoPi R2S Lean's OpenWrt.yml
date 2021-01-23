@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: Build NanoPi R2S Lean's OpenWrt
+name: NanoPi R2S Lean's OpenWrt
 
 on:
   repository_dispatch:
@@ -248,7 +248,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         if: steps.tag.outputs.status == 'success' && !cancelled()
         env:
-          GITHUB_TOKEN: ${{ secrets.RELEASES_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           name: ${{ steps.tag.outputs.release_date }} Lean OpenWrt
           tag_name: ${{ steps.tag.outputs.release_tag }}
@@ -262,7 +262,7 @@ jobs:
           keep_latest: 2
           delete_tags: true
         env:
-          GITHUB_TOKEN: ${{ secrets.RELEASES_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Delete Artifacts
         uses: geekyeggo/delete-artifact@v1
