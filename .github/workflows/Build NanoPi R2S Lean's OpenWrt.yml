@@ -171,7 +171,7 @@ jobs:
   Upload:
     needs: [Build]
     runs-on: ubuntu-18.04
-
+    if: github.repository == 'DHDAXCW/R4S-2021'
     steps:
       - name: Checkout
         uses: actions/checkout@main
@@ -201,23 +201,6 @@ jobs:
           mv server packages-server
           zip -qrm packages-server.zip packages-server
           mv packages-server.zip $OPENWRTROOT/bin/targets/$TARGET/$SUBTARGET
-
-      - name: Rclone Upload
-        env:
-          RCLONE_PACKAGE: ${{ secrets.RCLONE_PACKAGE }}
-          RCLONE_FIRMWARE: ${{ secrets.RCLONE_FIRMWARE }}
-        if: env.GENERATE_STATUS == 'success' && env.UPLOAD_RCLONE == 'true' && env.RCLONE_PACKAGE != ''
-        run: |
-          cd $OPENWRTROOT
-          curl https://rclone.org/install.sh | sudo bash
-          mkdir -p ~/.config/rclone/
-          cat << EOF > ~/.config/rclone/rclone.conf
-          ${{ secrets.RCLONE_CONFIG }}
-          EOF
-          rclone copy bin $RCLONE_PACKAGE:$(date +"%Y-%m-%d")/lean --filter-from ../data/rclone/upload-rule.txt
-          rclone copy bin/targets $RCLONE_FIRMWARE:$(date +"%Y-%m-%d")/lean --exclude "packages/"
-          echo "::warning file=Firmware-GoogleDrive::Download Link: https://drive.google.com/drive/folders/1_P2RoPbguY99qJxmCU4SKUgP8Kg0Xr03"
-
       - name: Organize Files
         id: organize
         if: env.GENERATE_STATUS == 'success'
@@ -228,20 +211,65 @@ jobs:
           curl -fsSL git.io/file-transfer | sh
           df -hT $PWD
           echo "::set-output name=ORGANIZE_STATUS::success"
-
-      - name: Upload Firmware To CowTransfer
-        if: steps.organize.outputs.ORGANIZE_STATUS == 'success' && env.UPLOAD_COWTRANSFER == 'true'
-        run: |
-          cd $OPENWRTROOT/bin/targets/$TARGET/
-          ./transfer cow --block 2621440 -s -p 64 --no-progress ${FIRMWARE} 2>&1 | tee cowtransfer.log
-          echo "::warning file=Firmware-Cowtransfer.com::$(cat cowtransfer.log | grep https)"
-
       - name: Upload Firmware To WeTransfer
+        id: wetransfer
         if: steps.organize.outputs.ORGANIZE_STATUS == 'success' && env.UPLOAD_WETRANSFER == 'true'
         run: |
           cd $OPENWRTROOT/bin/targets/$TARGET/
           ./transfer wet -s -p 16 --no-progress ${FIRMWARE} 2>&1 | tee wetransfer.log
           echo "::warning file=Firmware-Wetransfer.com::$(cat wetransfer.log | grep https)"
+          echo "::set-output name=url::$(cat wetransfer.log | grep https | cut -f3 -d" ")"
+      - name: Upload Firmware To CowTransfer
+        id: cowtransfer
+        if: steps.organize.outputs.ORGANIZE_STATUS == 'success' && env.UPLOAD_COWTRANSFER == 'true'
+        run: |
+          cd $OPENWRTROOT/bin/targets/$TARGET/
+          ./transfer cow --block 2621440 -s -p 64 --no-progress ${FIRMWARE} 2>&1 | tee cowtransfer.log
+          echo "::warning file=Firmware-Cowtransfer.com::$(cat cowtransfer.log | grep https)"
+          echo "::set-output name=url::$(cat cowtransfer.log | grep https | cut -f3 -d" ")"
+      - name: Generate release tag
+        id: tag
+        if: env.UPLOAD_RELEASE == 'true' && !cancelled()
+        run: |
+          echo "::set-output name=release_tag::$(date +"%Y.%m.%d")-Lean"
+          echo "::set-output name=release_date::$(date +"%Y.%m.%d")"
+          touch release.txt
+          [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
+          [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
+          echo "::set-output name=status::success"
+      - name: Upload firmware to release
+        uses: softprops/action-gh-release@v1
+        if: steps.tag.outputs.status == 'success' && !cancelled()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          name: ${{ steps.tag.outputs.release_date }} Lean OpenWrt
+          tag_name: ${{ steps.tag.outputs.release_tag }}
+          body_path: release.txt
+          files: ${{ env.FIRMWARE }}/*
+
+      - name: Build & Push Docker Image To Dockerhub
+        run: |
+          cd openwrt/bin/targets/$TARGET/$SUBTARGET/
+          docker import openwrt-rockchip-armv8-friendlyarm_nanopi-r4s-rootfs.tar.gz ${{ secrets.DOCKERHUB_USERNAME }}/openwrt:lean
+          docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/openwrt:lean
+          docker tag ${{ secrets.DOCKERHUB_USERNAME }}/openwrt:lean ${{ secrets.DOCKERHUB_USERNAME }}/openwrt:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/openwrt:latest
+      - name: Delete workflow runs
+        uses: GitRML/delete-workflow-runs@main
+        with:
+          retain_days: 1
+          keep_minimum_runs: 1
+
+      - name: Remove old Releases
+        uses: dev-drprasad/delete-older-releases@v0.1.0
+        if: env.UPLOAD_RELEASE == 'true' && !cancelled()
+        with:
+          keep_latest: 2
+          delete_tags: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Delete Artifacts
         uses: geekyeggo/delete-artifact@v1
