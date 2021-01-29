@@ -19,6 +19,8 @@
 
 - 增新了ipv6客户端，快速获取ipv6
 
+- 修复了ipv6情况下节点有时断开，提高上网质量；
+
 - 增加了helloworld插件
 
 - 修复了adguardhome插件无法启动问题，改为Lienol源码仓库的插件
