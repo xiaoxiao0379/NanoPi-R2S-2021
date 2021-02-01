@@ -50,6 +50,14 @@ sysupgrade tmp/<你的文件名>.img
  
 ### (离线升级由[thomaswcy](https://github.com/thomaswcy/op-direct-upgrade "thomaswcy")提供，非常感谢！)
 
+### 版本日志 2.1号
+
+- 增加多国语言
+
+- 再次优化了ipv6功能
+
+- 修复了小问题
+
 ## 更新日志1.30号
 
 - 增新了ipv6客户端，快速获取ipv6
