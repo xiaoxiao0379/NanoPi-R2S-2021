@@ -31,7 +31,7 @@ env:
 
 jobs:
   Build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     if: github.repository == 'DHDAXCW/NanoPi-R2S-2021'
     outputs:
       OPENWRTROOT: ${{ steps.update.outputs.OPENWRTROOT }}
@@ -63,6 +63,10 @@ jobs:
       id: update
       run: |
         cd openwrt
+       rm -rf ./target/linux/rockchip
+        svn co https://github.com/project-openwrt/openwrt/branches/master/target/linux/rockchip target/linux/rockchip
+        rm -rf ./package/boot/uboot-rockchip
+        svn co https://github.com/project-openwrt/openwrt/branches/master/package/boot/uboot-rockchip package/boot/uboot-rockchip
         echo "OPENWRTROOT=$PWD" >> $GITHUB_ENV
         echo "::set-output name=OPENWRTROOT::$(echo $PWD)"
         ./scripts/feeds update -a
