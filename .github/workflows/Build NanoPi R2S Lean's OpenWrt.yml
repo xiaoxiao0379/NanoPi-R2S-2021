@@ -67,9 +67,6 @@ jobs:
         svn co https://github.com/project-openwrt/openwrt/branches/master/target/linux/rockchip target/linux/rockchip
         rm -rf ./package/boot/uboot-rockchip
         svn co https://github.com/project-openwrt/openwrt/branches/master/package/boot/uboot-rockchip package/boot/uboot-rockchip
-        echo "OPENWRTROOT=$PWD" >> $GITHUB_ENV
-        echo "::set-output name=OPENWRTROOT::$(echo $PWD)"
-        ./scripts/feeds update -a
     - name: Install Feeds
       run: |
         cd $OPENWRTROOT
