@@ -60,15 +60,17 @@ jobs:
       run: |
         df -hT $PWD
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
-   
+        svn co https://github.com/project-openwrt/openwrt/branches/master/target/linux/rockchip target/linux/rockchip
+        rm -rf ./package/boot/uboot-rockchip
+        svn co https://github.com/project-openwrt/openwrt/branches/master/package/boot/uboot-rockchip package/boot/uboot-rockchip  
     - name: Update Feeds
       id: update
       run: |
         cd openwrt
-        rm -rf ./target/linux/rockchip
-        svn co https://github.com/project-openwrt/openwrt/branches/master/target/linux/rockchip target/linux/rockchip
-        rm -rf ./package/boot/uboot-rockchip
-        svn co https://github.com/project-openwrt/openwrt/branches/master/package/boot/uboot-rockchip package/boot/uboot-rockchip
+        echo "OPENWRTROOT=$PWD" >> $GITHUB_ENV
+        echo "::set-output name=OPENWRTROOT::$(echo $PWD)"
+        ./scripts/feeds update -a
+
     - name: Install Feeds
       run: |
         cd $OPENWRTROOT
