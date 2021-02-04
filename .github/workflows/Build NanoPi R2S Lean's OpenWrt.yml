@@ -61,6 +61,7 @@ jobs:
         df -hT $PWD
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
         rm -rf ./target/linux/rockchip 
+        # git rebase --onto 8724adeaac58ca3543dbb768a08de3186e131d8f 2a0b915c534f61fad18fb6a665f4c71566dad979
         rm -rf ./target/linux/rockchip
         svn co https://github.com/project-openwrt/openwrt/branches/master/target/linux/rockchip target/linux/rockchip
         rm -rf ./package/boot/uboot-rockchip
@@ -200,6 +201,7 @@ jobs:
           mv server packages-server
           zip -qrm packages-server.zip packages-server
           mv packages-server.zip $OPENWRTROOT/bin/targets/$TARGET/$SUBTARGET
+     
       - name: Organize Files
         id: organize
         if: env.GENERATE_STATUS == 'success'
