@@ -23,7 +23,7 @@ git clone --depth=1 https://github.com/Lienol/openwrt-package
 # Add luci-app-passwall
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall
 
-# Add luci-app-vssr
+# Add luci-app-vssr <M>
 git clone --depth=1 https://github.com/jerrykuku/lua-maxminddb.git
 git clone --depth=1 https://github.com/jerrykuku/luci-app-vssr
 
@@ -61,10 +61,6 @@ git clone --depth=1 https://github.com/lisaac/luci-lib-docker
 # Add luci-app-gowebdav
 git clone --depth=1 https://github.com/project-openwrt/openwrt-gowebdav
 
-# Add OpenAppFilter 
-git clone --depth=1 https://github.com/destan19/OpenAppFilter 
-popd 
- 
 # Add luci-theme-argon
 git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon
 git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config
@@ -88,13 +84,6 @@ git clone --depth=1 https://github.com/zcy85611/openwrt-luci-kcp-udp
 
 # Add OpenAppFilter
 git clone --depth=1 https://github.com/destan19/OpenAppFilter
-
-# Add luci-app-oled (R2S Only)
-git clone --depth=1 https://github.com/NateLol/luci-app-oled
-
-# Add driver for rtl8821cu & rtl8812au-ac
-svn co https://github.com/project-openwrt/openwrt/branches/master/package/ctcgfw/rtl8812au-ac
-svn co https://github.com/project-openwrt/openwrt/branches/master/package/ctcgfw/rtl8821cu
 popd
 
 # Add luci-app-oled (R2S Only)
