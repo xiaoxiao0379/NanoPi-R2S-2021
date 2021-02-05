@@ -124,6 +124,17 @@ pushd package/kernel/mt76
 sed -i '/mt7662u_rom_patch.bin/a\\techo mt76-usb disable_usb_sg=1 > $\(1\)\/etc\/modules.d\/mt76-usb' Makefile
 popd
 
+# Add Argon
+rm -rf package/lean/luci-theme-argon
+git clone -b 18.06 --single-branch https://github.com/jerrykuku/luci-theme-argon.git package/lean/luci-theme-argon
+
+# Add zui
+pushd package/lean/luci-theme-argon/luasrc/view/themes/argon
+sed -i '/<a class=\"luci-link\" href=\"https:\/\/github.com\/openwrt\/luci\">/d' footer.htm
+sed -i '/(<%= ver.luciversion %>)<\/a>/d' footer.htm
+sed -i '/<a href=\"https:\/\/github.com\/jerrykuku\/luci-theme-argon\">/d'  footer.htm
+sed -i '/<%= ver.distversion %>/d' footer.htm
+
 # Add po2lmo
 git clone https://github.com/openwrt-dev/po2lmo.git
 pushd po2lmo
