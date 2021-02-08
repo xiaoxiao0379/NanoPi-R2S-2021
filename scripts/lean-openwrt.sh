@@ -68,10 +68,6 @@ rm -rf ../lean/luci-theme-argon
 rm -rf ../lean/luci-theme-edge
 git clone -b 18.06 https://github.com/garypang13/luci-theme-edge
 
-# Add luci-theme-infinityfreedom
-rm -rf ../lean/luci-theme-infinityfreedom
-git clone https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom
-
 # Add tmate
 git clone --depth=1 https://github.com/immortalwrt/openwrt-tmate
 
