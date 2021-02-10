@@ -102,6 +102,11 @@ pushd package/lean
 svn co https://github.com/immortalwrt/immortalwrt/trunk/package/lean/pandownload-fake-server
 popd
 
+# Add ttf
+pushd feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status
+sed -i '/Load Average/i\\t\t<tr><td width="33%"><%:欢迎订阅 Youbube 频道%></td><td><a href="https://www.youtube.com/c/BIGdongdong">BIGDONGDONG</a></td></tr>' index.htm
+popd
+
 # Add driver for rtl8821cu & rtl8812au-ac
 pushd package/lean
 svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/ctcgfw/rtl8812au-ac
