@@ -87,7 +87,7 @@ git clone --depth=1 https://github.com/NateLol/luci-app-oled
 
 # Add ttf	
 pushd feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status	
-sed -i '/Load Average/i\\t\t<tr><td width="33%"><%:欢迎订阅 Youbube 频道%></td><td><a href="https://www.youtube.com/c/BIGdongdong">BIGDONGDONG</a></td></tr>' index.htm	
+sed -i '/Load Average/i\\t\t<tr><td width="33%"><%:欢迎订阅 Youtube 频道%></td><td><a href="https://www.youtube.com/c/BIGdongdong">BIGDONGDONG</a></td></tr>' index.htm	
 popd
 
 # Add OpenAppFilter
