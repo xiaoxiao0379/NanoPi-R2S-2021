@@ -1,3 +1,6 @@
+# 祝大家新年快乐，万事如意
+
+
 # NanoPi-R2S-2021 每天自动更新插件和内核版本
 
 # 如果你们觉得这固件挑卡，请往那边下载固件→https://github.com/DHDAXCW/NanoPi-R2S-bate
