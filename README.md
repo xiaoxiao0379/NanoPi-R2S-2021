@@ -30,6 +30,12 @@
 
 - 下载地址： https://github.com/DHDAXCW/NanoPi-R2S-2021/releases
 
+### 版本日志 2.13版
+
+- passwall和SSRP中的去掉v2ray协议,Xray正在取代v2ray的位置。
+
+- 移除服务的v2ray服务器
+
 ### 版本日志 2.6号 那就尴尬了，一键治疗熊孩子还是没加上去，明天继续
 
 - 增新 OpenAppFilter插件 一键治疗熊孩子	
@@ -47,12 +53,6 @@
 - 修复卡刷无法开机，再次优化	
 
 - 修复小问题
-
-### 版本日志 2.13版
-
-- passwall和SSRP中的去掉v2ray协议,Xray正在取代v2ray的位置。
-
-- 移除服务的v2ray服务器
 
 ### 版本日志 2.1	
 
