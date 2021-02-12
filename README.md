@@ -28,6 +28,8 @@
 
 - 用户名：root 密码：password 管理IP：192.168.2.1
 
+- 下载地址： https://github.com/DHDAXCW/NanoPi-R2S-2021/releases
+
 ### 版本日志 2.6号 那就尴尬了，一键治疗熊孩子还是没加上去，明天继续
 
 - 增新 OpenAppFilter插件 一键治疗熊孩子	
