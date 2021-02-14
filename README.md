@@ -29,7 +29,7 @@
 - 用户名：root 密码：password 管理IP：192.168.2.1
 
 - 下载地址： https://github.com/DHDAXCW/NanoPi-R2S-2021/releases
-
+![Alt text](data/2.jpg?raw=true "Title")
 ### 版本日志 2.13版
 
 - passwall和SSRP中的去掉v2ray协议,Xray正在取代v2ray的位置。
