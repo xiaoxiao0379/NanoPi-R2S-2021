@@ -66,6 +66,14 @@ git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon
 git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config
 rm -rf ../lean/luci-theme-argon
 
+# Add luci-theme-edge
+rm -rf ../lean/luci-theme-edge
+git clone -b 18.06 https://github.com/garypang13/luci-theme-edge
+
+# Add luci-theme-infinityfreedom
+rm -rf ../lean/luci-theme-infinityfreedom
+git clone https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom
+
 # Add tmate
 git clone --depth=1 https://github.com/immortalwrt/openwrt-tmate
 
@@ -77,18 +85,13 @@ svn co https://github.com/immortalwrt/immortalwrt/trunk/package/ctcgfw/gotop
 
 # Add smartdns
 svn co https://github.com/pymumu/smartdns/trunk/package/openwrt ../smartdns
-svn co https://github.comimmortalwrt/immortalwrt/trunk/package/ntlf9t/luci-app-smartdns ../luci-app-smartdns
+svn co https://github.com/immortalwrt/immortalwrt/trunk/package/ntlf9t/luci-app-smartdns ../luci-app-smartdns
 
 # Add luci-udptools
 git clone --depth=1 https://github.com/zcy85611/openwrt-luci-kcp-udp
 
 # Add luci-app-oled (R2S Only)
 git clone --depth=1 https://github.com/NateLol/luci-app-oled
-
-# Add ttf	
-pushd feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status	
-sed -i '/Load Average/i\\t\t<tr><td width="33%"><%:欢迎订阅 Youtube 频道%></td><td><a href="https://www.youtube.com/c/BIGdongdong">BIGDONGDONG</a></td></tr>' index.htm	
-popd
 
 # Add OpenAppFilter
 git clone --depth=1 https://github.com/destan19/OpenAppFilter
@@ -103,6 +106,11 @@ popd
 pushd package/lean
 svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/ctcgfw/rtl8812au-ac
 svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/ctcgfw/rtl8821cu
+popd
+
+# Add rtl88x2bu
+pushd package/lean
+svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/ctcgfw/rtl88x2bu
 popd
 
 # Mod zzz-default-settings
