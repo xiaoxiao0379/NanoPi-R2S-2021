@@ -1,6 +1,3 @@
-# 祝大家新年快乐，万事如意
-不停更嘿嘿
-
 # NanoPi-R2S-2021 每天自动更新插件和内核版本
 
 # 如果你们觉得这固件挑卡，请往那边下载固件→https://github.com/DHDAXCW/NanoPi-R2S-bate
@@ -9,8 +6,7 @@
 
 ### DDNSTO穿透插件
 
-- 没有源码编译把插件打上固件里，只能通过这此方式来安装了。下载👉[**ddnsto.sh**](https://github.com/DHDAXCW/NanoPi-R4S-2021/releases/tag/ddns),软路由→系统→文件传输→上传选择刚下的ddnsto.sh，然后系统→ttyd终端命令执行 `sh /tmp/upload/ddnsto.sh` 刷新一下就出现在服务里了。不懂的话，还是看视频吧。。。
-
+- 没有源码编译把插件打上固件里，只能通过这此方式来安装了。下载👉[**ddnsto.sh**](https://github.com/DHDAXCW/NanoPi-R4S-2021/releases/tag/ddns)👈,软路由→系统→文件传输→上传选择刚下的ddnsto.sh，然后系统→ttyd终端命令执行 `sh /tmp/upload/ddnsto.sh` 刷新一下就出现在服务里了。不懂的话，还是看视频吧。。。
 ## 目前的编译已修复卡刷无法开机的问题。
 
 我的固件很挑卡。，特别是32G容易开不了机，刷上面的即可
