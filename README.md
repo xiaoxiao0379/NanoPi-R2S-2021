@@ -6,7 +6,7 @@
 
 # DDNSTO穿透插件
 
-- 没有源码编译把插件打上固件里，只能通过这此方式来安装了。下载👉[**ddnsto.sh**](https://github.com/DHDAXCW/NanoPi-R4S-2021/releases/tag/ddns)👈,软路由→系统→文件传输→上传选择刚下的ddnsto.sh，然后系统→ttyd终端命令执行 `sh /tmp/upload/ddnsto.sh` 刷新一下就出现在服务里了。不懂的话，还是看视频吧。。。
+- 如果设备没有此插件，可以通过这此方式来安装了。下载👉[**ddnsto.sh**](https://github.com/DHDAXCW/NanoPi-R4S-2021/releases/tag/ddns)👈,软路由→系统→文件传输→上传选择刚下的ddnsto.sh，然后系统→ttyd终端命令执行 `sh /tmp/upload/ddnsto.sh` 刷新一下就出现在服务里了。不懂的话，还是看视频吧。。。
 ## 目前的编译已修复卡刷无法开机的问题。
 
 我的固件很挑卡。，特别是32G容易开不了机，刷上面的即可
@@ -29,6 +29,13 @@
 
 - 下载地址： https://github.com/DHDAXCW/NanoPi-R2S-2021/releases
 ![Alt text](data/2.jpg?raw=true "Title")
+
+### 版本 2.17版
+
+- 新增ddnsto内网穿透插件和易有云插件2.0， ddnsto与易有云都可以借助 aria2 完成远程下载 （特别感谢[**linkease**](https://github.com/linkease/ddnsto-openwrt)原作者提供源码。）
+
+- 更新主题
+
 ### 版本日志 2.13版
 
 - passwall和SSRP中的去掉v2ray协议,Xray正在取代v2ray的位置。
