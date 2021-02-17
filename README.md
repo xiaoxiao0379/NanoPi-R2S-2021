@@ -34,6 +34,11 @@
 - 下载地址： https://github.com/DHDAXCW/NanoPi-R2S-2021/releases
 ![Alt text](data/2.jpg?raw=true "Title")
 
+### 版本日志 2.18版
+- 修复AdGuard Home崩溃问题
+- 更新无线网阿卡驱动源
+- 更换AdGuard Home源码
+
 ### 版本 2.17版
 
 - 新增ddnsto内网穿透插件和易有云插件2.0， ddnsto与易有云都可以借助 aria2 完成远程下载 （特别感谢[**linkease**](https://github.com/linkease/ddnsto-openwrt)原作者提供源码。）
