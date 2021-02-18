@@ -1,7 +1,5 @@
 # NanoPi-R2S-2021 每天自动更新插件和内核版本
 
-### 如果刷上开机没反应，请往这边下bate版固件
-- 不挑卡的固件   https://github.com/DHDAXCW/NanoPi-R2S-bate/releases
 
 ### DDNSTO穿透插件
 
