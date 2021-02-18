@@ -36,6 +36,7 @@
 
 ### 版本日志 2.18版
 - 修复AdGuard Home崩溃问题
+- 修复passwall和ssrp的v2ray协议
 - 更新无线网卡驱动源
 - 更换AdGuard Home源码
 
