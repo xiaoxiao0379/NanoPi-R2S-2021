@@ -37,11 +37,16 @@
 ![Alt text](data/2.jpg?raw=true "Title")
 
 ### 版本日志 2.18版
+- 解决挑卡无法开机问题（我很累。。。）
 - 修复AdGuard Home崩溃问题
 - 修复passwall和ssrp的v2ray协议
 - 更新无线网卡驱动源
 - 更换AdGuard Home源码
-
+- 优化补丁中的自动调节超频
+- 增加螃蟹网卡驱动，rtwl8811-88**usb CU系列
+- 新增 OpenAppFilter插件 一键治疗熊孩子
+- 修复卡刷无法开机，再次优化
+- 修复了其他小问题
 ### 版本 2.17版
 
 - 新增ddnsto内网穿透插件和易有云插件2.0， ddnsto与易有云都可以借助 aria2 完成远程下载 （特别感谢[**linkease**](https://github.com/linkease/ddnsto-openwrt)原作者提供源码。）
