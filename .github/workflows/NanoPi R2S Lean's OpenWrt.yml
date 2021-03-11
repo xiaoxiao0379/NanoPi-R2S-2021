@@ -58,6 +58,7 @@ jobs:
         svn co https://github.com/immortalwrt/immortalwrt/branches/master/target/linux/rockchip target/linux/rockchip
         rm -rf ./package/boot/uboot-rockchip
         svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/boot/uboot-rockchip package/boot/uboot-rockchip
+        svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/boot/arm-trusted-firmware-rk3328
     
     - name: Update Feeds
       id: update
