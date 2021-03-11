@@ -22,7 +22,9 @@
 # 赏个鸡腿吧
  ![Alt text](data/2.jpg?raw=true "Title")
 ### 如果你觉得此项目对你有帮助，可以捐助我们，以鼓励项目能持续发展，更加完善
-
+### 版本日志 3.12
+- 新增 mbedTLS ARMv8-CE 加密扩展支持以大幅提升 AES 运算效率（约 4～10 倍），使得 Shadowsocks 等使用其加密库的软件获得巨大的性能优化。
+- 
 ### 版本日志 3.9
 - 移除docker 
 - 移除passwall的v2ray协议，有xray在就放心。
