@@ -161,10 +161,16 @@ sed -i 's/\/bin\/ash/\/usr\/bin\/zsh/g' package/base-files/files/etc/passwd
 sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
 
 # Custom configs
-git am $GITHUB_WORKSPACE/patches/*.patch
+#git am $GITHUB_WORKSPACE/patches/*.patch
 echo -e " Lean's OpenWrt built on "$(date +%Y.%m.%d)"\n -----------------------------------------------------" >> package/base-files/files/etc/banner
 
 #Add CUPInfo
 pushd package/lean/autocore/files/arm/sbin
 cp -f $GITHUB_WORKSPACE/scripts/cpuinfo cpuinfo
+popd
+
+#Add Aes-evo
+sed -i 's,-mcpu=generic,-march=armv8-a+crypto+crc -mabi=lp64,g' include/target.mk
+pushd package/libs/mbedtls/patches
+cp -f $GITHUB_WORKSPACE/data/extra/100-Implements-AES-and-GCM-with-ARMv8-Crypto-Extensions.patch 100-Implements-AES-and-GCM-with-ARMv8-Crypto-Extensions.patch
 popd
