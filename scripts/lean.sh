@@ -27,7 +27,7 @@ git clone --depth=1 https://github.com/KyleRicardo/MentoHUST-OpenWrt-ipk
 git clone --depth=1 https://github.com/ysc3839/luci-proto-minieap
 svn co https://github.com/immortalwrt/immortalwrt/trunk/package/ntlf9t/minieap
 
-#Add luci-app-netdata
+# Add luci-app-netdata
 rm -rf ../lean/luci-app-netdata
 svn co https://github.com/281677160/openwrt-package/trunk/luci-app-netdata
 
@@ -75,6 +75,9 @@ svn co https://github.com/immortalwrt/immortalwrt/trunk/package/ctcgfw/gotop
 svn co https://github.com/pymumu/smartdns/trunk/package/openwrt ../smartdns
 svn co https://github.com/immortalwrt/immortalwrt/trunk/package/ntlf9t/luci-app-smartdns ../luci-app-smartdns
 
+# Add cpulimit
+svn co https://github.com/281677160/openwrt-package/trunk/luci-app-cpulimit
+
 # Add luci-udptools
 git clone --depth=1 https://github.com/zcy85611/openwrt-luci-kcp-udp
 
@@ -95,12 +98,12 @@ popd
 #sed -i 's/or "1"%>/or "1"%> ( <%=luci.sys.exec("expr `cat \/sys\/class\/thermal\/thermal_zone0\/temp` \/ 1000") or "?"%> \&#8451; ) /g' index.htm
 #popd
 
-#Add luci-app-ddnsto
+# Add luci-app-ddnsto
 pushd package/network/services
 git clone --depth=1 https://github.com/linkease/ddnsto-openwrt
 popd
 
-#Add luci-app-linkease
+# Add luci-app-linkease
 pushd package/network/services
 git clone --depth=1 https://github.com/linkease/linkease-openwrt
 popd
@@ -163,15 +166,11 @@ sed -i 's/\/bin\/ash/\/usr\/bin\/zsh/g' package/base-files/files/etc/passwd
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
 
-# Swap LAN WAN
-# sed -i 's,"eth1" "eth0","eth0" "eth1",g' target/linux/rockchip/armv8/base-files/etc/board.d/02_network
-# sed -i "s,'eth1' 'eth0','eth0' 'eth1',g" target/linux/rockchip/armv8/base-files/etc/board.d/02_network
-
 # Custom configs
 git am $GITHUB_WORKSPACE/patches/lean/*.patch
 echo -e " DHDAXCW's OpenWrt built on "$(date +%Y.%m.%d)"\n -----------------------------------------------------" >> package/base-files/files/etc/banner
 
-#Add CUPInfo
+# Add CUPInfo
 pushd package/lean/autocore/files/arm/sbin
 cp -f $GITHUB_WORKSPACE/scripts/cpuinfo cpuinfo
 popd
