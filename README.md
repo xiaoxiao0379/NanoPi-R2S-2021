@@ -23,6 +23,8 @@
 # 赏个鸡腿吧
  ![Alt text](data/2.jpg?raw=true "Title")
 ### 如果你觉得此项目对你有帮助，可以捐助我们，以鼓励项目能持续发展，更加完善
+### 紧急更新日志
+- 更新passwall和ssrp全协议（之前忘记搞。。。）
 ### 更新日志 3.28
 - 解禁R2S的GPU
 - 添加了 R2S/R4S 的硬件转码，可以用 Jellyfin， 1080p HEVC 10bit 60fps 无需 CPU 参与
