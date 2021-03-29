@@ -67,7 +67,7 @@ rm -rf ../lean/luci-theme-argon
 #svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-19.07/package/ctcgfw/tmate
 
 # Add subconverter
-git clone --depth=1 https://github.com/tindy2013/openwrt-subconverter
+#git clone --depth=1 https://github.com/tindy2013/openwrt-subconverter
 
 # Add gotop
 svn co https://github.com/immortalwrt/packages/trunk/admin/gotop
