@@ -54,13 +54,19 @@ jobs:
         # cd openwrt
         # chmod +x ./target/linux/rockchip/armv8/base-files/etc/board.d/01_leds
         # chmod +x ./target/linux/rockchip/armv8/base-files/etc/board.d/02_network
+        
     - name: Update Feeds
       id: update
       run: |
         cd openwrt
         echo "OPENWRTROOT=$PWD" >> $GITHUB_ENV
         echo "::set-output name=OPENWRTROOT::$(echo $PWD)"
-        ./scripts/feeds update -a
+        mkdir customfeeds
+        git clone --depth=1 https://github.com/coolsnowwolf/packages customfeeds/packages
+        git clone --depth=1 https://github.com/coolsnowwolf/luci customfeeds/luci
+        chmod +x ../scripts/*.sh
+        ../scripts/hook-feeds.sh
+        
     - name: Install Feeds
       run: |
         cd $OPENWRTROOT
