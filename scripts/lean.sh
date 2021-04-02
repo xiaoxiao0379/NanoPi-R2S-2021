@@ -75,7 +75,7 @@ svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-18.06-k5.4/pa
 
 # Add dafeiji
 svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/lean/luci-app-cpufreq
-svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/ntlf9t/cpulimit
+svn co https://github.com/281677160/openwrt-package/trunk/cpulimit
 svn co https://github.com/281677160/openwrt-package/trunk/luci-app-cpulimit
 
 # Add luci-udptools
