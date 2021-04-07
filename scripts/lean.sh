@@ -156,7 +156,7 @@ sed -i 's,"eth1" "eth0","eth0" "eth1",g' target/linux/rockchip/armv8/base-files/
 sed -i "s,'eth1' 'eth0','eth0' 'eth1',g" target/linux/rockchip/armv8/base-files/etc/board.d/02_network
 
 # Custom configs
-# git am $GITHUB_WORKSPACE/patches/lean/*.patch
+git am $GITHUB_WORKSPACE/patches/lean/*.patch
 echo -e " Lean's OpenWrt built on "$(date +%Y.%m.%d)"\n -----------------------------------------------------" >> package/base-files/files/etc/banner
 
 # Add CUPInfo
