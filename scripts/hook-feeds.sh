@@ -1,7 +1,7 @@
 #!/bin/bash
 #=================================================
 # File name: hook-feeds.sh
-# Author: SuLingGG
+# Author: DHDAXCW
 # Blog: https://mlapp.cn
 #=================================================
 
