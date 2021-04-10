@@ -1,15 +1,5 @@
 # NanoPi-R2S-2021 每天自动更新插件和内核版本。
 ## 强烈推荐三星TF卡，哪怕是很难刷上的固件，只有三星刷上可以开机。
-### DDNSTO穿透插件
-
-- 目前编译已安装上了
-- 可以直接在软路由ttyd执行，复制👇👇👇
-- ```wget https://raw.githubusercontent.com/linkease/ddnsto_all_in_one_script/master/install_ddnsto.sh&& sh install_ddnsto.sh``` 
-- 然后到ttyd终端下回车后进度结束。👇
-- 刷新一下就出现在服务里了。如果还没明白，可以[**看视频**](https://www.bilibili.com/video/BV1mo4y197jK)如何安装就行
-- 如果在过程中遇到安装失败，可以执行备用命令安装👇
-- 备用命令 ```wget https://github.com/DHDAXCW/ddnsto_all_in_one_script/releases/download/ddns/ddnsto.sh;sh ddnsto.sh```
-
 ## 提示
  - 我的固件加了动态超频，不管热不热这是取决后台运行程序在跑什么。
  - 感觉很热  就加风扇，推荐 风扇6cm×6cm，薄1cm，usb也行 或者端子线zh1.5
